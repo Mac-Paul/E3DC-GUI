@@ -1,9 +1,9 @@
 ## RSCP GUI
-Hier beschreibe ich wie du auf einen Rasperry Pi mit 3,2" Touchdisplay dein S10 Hauskraftwerk von E3DC visualisieren kannst.
+Hier beschreibe ich wie du auf einen Rasperry Pi mit 3,2" Touchdisplay dein __S10 Hauskraftwerk__ von __E3DC__ visualisieren kannst.
 
 Als Schnittstelle zwischen S10 und dem Raspberry dient ein Beispielapplikation, die E3DC im Downloadbereich hat.
 
-Ich nutze diese Applikation auf einem Raspberry Pi 3. Mein S10-E hat Release-Version 2016-02. Diese Applikation funktioniert auch für S10-Mini und für S10-SP40. Mit meiner sehr geringen Erfahrung in der Programmierung sind die Änderungen in der Applikation eventuell unprofessionell ausgefallen, aber die Funktionalität wird erfüllt.
+Ich nutze diese Applikation auf einem Raspberry Pi 3. Mein S10-E hat Release-Version _2016-02_. Diese Applikation funktioniert auch für S10-Mini und für S10-SP40. Mit meiner sehr geringen Erfahrung in der Programmierung sind die Änderungen in der Applikation eventuell unprofessionell ausgefallen, aber die Funktionalität wird erfüllt.
 
 <img src="https://s20.postimg.org/90o1nmhy5/E3_DC_GUI.jpg" alt="E3DC-GUI">
 
@@ -40,7 +40,7 @@ In der _RscpMain.c_ musst du die Zugangsdaten zum S10 noch definieren. Die Einst
 #define AES_PASS            "1234567890"
 ```
 Die IP-Adresse ist die IP von deinem S10, E3DC_USER ist der Benutzername vom Kundenportal, E3DC_PASS ist dein Password zum Kundenportal und AES_PASS ist ein RSCP-Passwort welches du am S10 vergeben kannst. Im „Hauptmenü“ unter „Einstellungen“ kann das RSCP-Passwort gesetzt werden.
-Um die Einstellungen vorzunehmen kann man mit "WSCP" oder ähnlichen Programmen die Datei öffenen.
+
 Das wechsel in den Ordner nicht vergessen:
 ```
 cd RscpGui
