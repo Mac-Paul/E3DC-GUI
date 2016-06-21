@@ -75,7 +75,7 @@ int createRequestExample(SRscpFrameBuffer * frameBuffer) {
       strftime (Time,40,"%H:%M:%S",now);
       ofstream fout("/mnt/RAMDisk/RscpGui.txt");
       if (fout.is_open()) {
-        fout << Date << "\n" << Time << "\n" << TAG_EMS_OUT_POWER_PV << "\n" << TAG_EMS_OUT_POWER_BAT << "\n" << TAG_EMS_OUT_POWER_HOME << "\n" << TAG_EMS_OUT_POWER_GRID << "\n" << TAG_BAT_OUT_SOC << "\n" << TAG_EMS_OUT_AUTARKY << "\n" << TAG_EMS_OUT_SELF_CONSUMPTION << endl;
+        fout << Date << "\n" << Time << "\n" << TAG_EMS_OUT_POWER_PV << "\n" << TAG_EMS_OUT_POWER_BAT << "\n" << TAG_EMS_OUT_POWER_HOME << "\n" << TAG_EMS_OUT_POWER_GRID << "\n" << TAG_BAT_OUT_SOC << endl;
         fout.close();
         }
       else cerr << "Konnte Datei nicht erstellen!";
