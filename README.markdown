@@ -7,7 +7,8 @@ Hier beschreibe ich wie du auf einem Rasperry Pi mit 3,2" Touchdisplay dein _S10
 
 Als Schnittstelle zwischen S10 und dem Raspberry dient eine Beispielapplikation, die E3DC im Downloadbereich hat.
 
-Ich nutze diese Applikation auf einem Raspberry Pi 3. Mein S10-E hat Release-Version 2016-02. Diese Applikation funktioniert auch für S10-Mini und für S10-SP40. Mit meiner sehr geringen Erfahrung, in der Programmierung sind die Änderungen in der Applikation eventuell unprofessionell ausgefallen, aber die Funktionalität wird erfüllt.
+Ich nutze diese Applikation auf einem Raspberry Pi 3, mit eine Joy-It 3,2" Touchdisplay ([Conrad 1380381 - 62](https://www.conrad.de/de/raspberry-pi-display-modul-schwarz-rb-tft32-v2-raspberry-pi-a-b-b-raspberry-pi-1380381.html)). Mein S10-E12 hat Release-Version _2016-02_. Diese Applikation funktioniert auch für S10-Mini und für S10-SP40. Mit meiner sehr geringen Erfahrung, in der Programmierung, sind die Änderungen in den Applikationen eventuell unprofessionell ausgefallen, aber die Funktionalität wird erfüllt.
+
 
 Bild noch mit Version 1 der RSCP GUI:
 <img src="https://s20.postimg.org/90o1nmhy5/E3_DC_GUI.jpg" alt="E3DC-GUI">
@@ -45,7 +46,16 @@ In der _RscpMain.c_ musst du die Zugangsdaten zum S10 noch definieren. Die Einst
 #define AES_PASS            "1234567890"
 ```
 Die IP-Adresse ist die IP von deinem S10, E3DC_USER ist der Benutzername vom Kundenportal, E3DC_PASS ist dein Password zum Kundenportal und AES_PASS ist ein RSCP-Passwort welches du am S10 vergeben kannst. Im „Hauptmenü“ unter „Einstellungen“ kann das RSCP-Passwort gesetzt werden.
-Um die Einstellungen vorzunehmen kann man mit "WSCP" oder ähnlichen Programmen die Datei öffenen.
+
+Da euer Hauskraftwerk mit Leistungsmesser für externe Quellen und / oder mit Wallbox ausgestattet sein kann, muss du noch definieren ob die Komponenten vorhanden sind. Dies geschieht in den Zeilen 28 bis 31:
+```
+//Wenn vorhandene, Bitte für Externe-Quelle (Additional) und
+//Wallbox je ein 1, sonst 0 eintragen.
+#define Additional  	1
+#define Wallbox 		1
+```
+
+### Starten der RscpMain.cpp
 
 Das wechseln in den Ordner nicht vergessen:
 ```
@@ -221,3 +231,11 @@ gehören zur GUI und ich habe den Ursprung dieser Datein hier her:
 Die RSCP-Applikation (RscpMain.cpp) kann für viele weitere Anwendungen genutzt werden. Wie zum Beispiel meine [E3DCtoHM](https://github.com/nischram/E3DCtoHM.git) um eine HomeMatic mit Werten des S10 zu versorgen.
 
 Wenn ihr eigene Projekte erstellt, würde ich mich freuen, wenn ihr diese veröffentlicht.
+
+### Meine Quelle:
+
+Downloadbereich E3DC Kundenportal [https://s10.e3dc.com](https://s10.e3dc.com)
+
+Service > Download > Zusätzliche Optionen >  RSCP-Beispielapplikation_2016-04-25.pdf
+
+[Link](https://s10.e3dc.com/s10/module/download/get.php?dl=3408) (Benutzerdaten erforderlich)
