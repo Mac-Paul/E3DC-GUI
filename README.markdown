@@ -73,8 +73,8 @@ RSCP authentitication level 10
 ____________________
 Request cyclic data
 Serial-Number is S10-4013xxxxxxxx
-System Time is 30.06.2016_20:56:15
-System Unix-Time is 1467312975
+System Time is 30.06.2016_20:35:47
+System Unix-Time is 1467311062
 PV Power is 46 W
 Battery Power is -930 W
 House Power is 974 W
@@ -90,7 +90,7 @@ PVI State = 1
 LM0 State = 1
 ```
 
-Diese Werte werden in der RscpGui.txt im RAMDisk gespeichert (siehe Abschnitt RAMDisk). Die Datei ist in Folgender Reihenfolge gpeichert:
+Diese Werte werden in der RscpGui.txt im RAMDisk gespeichert (siehe Abschnitt RAMDisk). Die Datei ist in Folgender Reihenfolge gpeichert: (Werte sind ausgedacht, ich habe keine Wallbox)
 
 ```shell
 30.06.2016               //Datum
