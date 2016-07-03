@@ -193,7 +193,6 @@ int main()
 //Date
 	snprintf (OUT, (size_t)100, "%s", TAG_Date);
 	createButton(buttonCordsDate[X],buttonCordsDate[Y],buttonCordsDate[W],buttonCordsDate[H],OUT,WHITE,GREY);
-	snprintf (OUT, (size_t)100, "%s %%", TAG_SOC);
 //Programm-Start
 	 if(start == 0){
 		 snprintf (OUT, (size_t)100, "%s", TAG_SerialNr);
@@ -410,8 +409,9 @@ int main()
 	 createButton(buttonCordsDate[X],buttonCordsDate[Y],buttonCordsDate[W],buttonCordsDate[H],OUT,WHITE,GREY);
 	 snprintf (OUT, (size_t)100, "%s %%", TAG_SOC);
 //SOC
-	 int TAG_BatStateint = atoi(TAG_BatState);
-	 if(TAG_BatStateint >= 1){
+	snprintf (OUT, (size_t)100, "%s %%", TAG_SOC);
+	int TAG_BatStateint = atoi(TAG_BatState);
+	if(TAG_BatStateint >= 1){
 	 	int TAG_SOCint = atoi(TAG_SOC);
 	 	SOCx = 2 * TAG_SOCint;
 	 	drawSquare(58,6,204,24,WHITE);
