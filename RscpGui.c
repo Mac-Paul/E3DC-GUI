@@ -28,7 +28,7 @@ void createButton(int x, int y, int w, int h, char *text, int backgroundColor, i
       		length++;
 	if((length*8)> (w-2)){
 		printf("####error,button too small for text####\n");
-		exit(1);
+		//exit(1);
 	}
 	drawSquare(x-2,y-2,w+4,h+4,backgroundColor);
 	drawSquare(x,y,w,h,foregroundColor);
@@ -115,6 +115,7 @@ int main()
 	createButton(buttonCordsADD[X],buttonCordsADD[Y],buttonCordsADD[W],buttonCordsADD[H],"ADD",WHITE,GREY);
 	int buttonCordsWB[4] = {245,95,60,40};
 	createButton(buttonCordsWB[X],buttonCordsWB[Y],buttonCordsWB[W],buttonCordsWB[H],"WB All",WHITE,GREY);
+	sleep(8)
 
 	while(1){
 //Bildwechsel
@@ -174,6 +175,25 @@ int main()
 		printf("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", TAG_Date, TAG_Time, TAG_PVI, TAG_Bat, TAG_Home, TAG_Grid, TAG_SOC, TAG_BatState, TAG_Autarky, TAG_SelfCon, TAG_SerialNr, TAG_UnixTime, TAG_ADD, TAG_WbAll, TAG_WbSolar, TAG_PVIState, TAG_PMState);
 		fclose(fp);
 	 }
+//Time
+	int AktuallTime = time(NULL);
+	int TAG_UnixTimeint = atoi(TAG_UnixTime);
+	int DiffTime = AktuallTime - TAG_UnixTimeint;
+	snprintf (OUT, (size_t)100, "%s", TAG_Time);
+	if(DiffTime > 180){
+		createButton(buttonCordsTime[X],buttonCordsTime[Y],buttonCordsTime[W],buttonCordsTime[H],OUT,RED,GREY);
+		printf("Time False %i; ", DiffTime);
+		changeStop = 1;
+	}
+	else{
+		createButton(buttonCordsTime[X],buttonCordsTime[Y],buttonCordsTime[W],buttonCordsTime[H],OUT,GREEN,GREY);
+		printf("Time OK %i; ", DiffTime);
+		changeStop = 0;
+	}
+//Date
+	snprintf (OUT, (size_t)100, "%s", TAG_Date);
+	createButton(buttonCordsDate[X],buttonCordsDate[Y],buttonCordsDate[W],buttonCordsDate[H],OUT,WHITE,GREY);
+	snprintf (OUT, (size_t)100, "%s %%", TAG_SOC);
 //Programm-Start
 	 if(start == 0){
 		 snprintf (OUT, (size_t)100, "%s", TAG_SerialNr);
