@@ -29,6 +29,11 @@ Beide Programme liegen nach dem folgenden Download in diesem Ordner:
 /pi/home/RscpGui/
 ```
 
+### Netzwerk
+
+Es ist Wichtig darauf zu achten, dass der Raspberry Pi im selben Netzwerk wie das S10 installiert ist. Der IP-Adressbereich muss gleich sein, zum Beispiel so: 192.168.178.xxx
+Auch darf die Verbindung zwischen S10 und Raspberry Pi nicht über eine VPN Verbindung hergestellt werden.
+
 ### Download
 
 Mit dem Git-Clone-Befehl wird der SourceCode auf den Raspberry kopiert.
