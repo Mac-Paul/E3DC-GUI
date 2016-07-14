@@ -26,7 +26,7 @@ Die GUI liest die Text-Datei aus dem RAMDisk und baut die GUI.
 
 Beide Programme liegen nach dem folgenden Download in diesem Ordner:
 ```
-/pi/home/RscpGui/
+/home/pi/RscpGui/
 ```
 
 ### Netzwerk
@@ -121,13 +121,13 @@ Diese Werte werden in der RscpGui.txt im RAMDisk gespeichert (siehe Abschnitt RA
 96                       //Eigenverbrauch (Self Consuption)
 S10-4013xxxxxxxx         //Seriennummer
 1467311062               //Unix-Time
-1                        //externe Quelle vorhanden (Additional)
+1                        //externe Quelle vorhanden (Additional) 1=Aktiv
 1840                     //Power externe Quelle
-1                        //Wallbox vorhanden
+1                        //Wallbox vorhanden 1=Aktiv
 3220                     //Power Wallbox All
 3200                     //Power Wallbox Solar
-1                        //Status Wechselrichter (PVI)
-1                        //Status Leistungsmesser
+1                        //Status Wechselrichter (PVI) 1=Aktiv
+1                        //Status Leistungsmesser 1=Aktiv
 ```
 
 Gestoppt wird die Applikation vorerst mit „strg“ + „c“
