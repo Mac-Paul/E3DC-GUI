@@ -248,6 +248,7 @@ In der neuen Watchdog.cpp kann noch verschiedenes definiert werden:
 Wenn der Watchdog zuschlägt, erstellt er eine Datei "Watchdog.csv" im RscpGui Ordner. Somit ist eine kotrolle der aktivität möglich. Es wird je aktivität eine Zeile erstellt entweder mit reboot eintrag oder mit pkill wenn die Applikation neu gestartet wurde.
 
 In der atReboot.sh habe ich den Watchdog eingefügt.
+
 Damit einfach kompiliert werden kann habe ich das Makefile auch angepasst.
 
 Somit müsste für ein nachrüsten des WatchDog 1. die RscpMain.cpp angepasst, 2. die Watchdog.cpp kopiert und 3. das Makefile und die atReboot.sh ausgetauscht werden.
