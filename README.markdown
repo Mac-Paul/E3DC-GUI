@@ -225,7 +225,7 @@ Teilweise bleibt die RSCP-Applikation hängen und die Automatische re-connection
 
 Für dieses Problem habe ich einen einfachen WatchDog geschrieben. Damit der WatchDog den Betrieb der Applikation überwachen kann, lasse ich mit einer kleinen Teil in der RscpMain eine weitere Datei im RAMDisk erstellen. In der Datei ist die Unixtime, diese widerum liest der WatchDog ein und vergleicht diese mit einer definierten Differenz mit der aktuellen Ziet.  
 
-In der RscpMain.cpp sind die Zeilen 98 bis 103 neu:
+In der RscpMain.cpp sind die Zeilen 93 bis 98 neu:
 ```
 ofstream fout("/mnt/RAMDisk/Unixtime.txt");
 if (fout.is_open()) {
