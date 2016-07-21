@@ -223,7 +223,7 @@ Diesen Teil zum RAMDisk habe ich von hier Kopiert:
 
 Teilweise bleibt die RSCP-Applikation hängen und die Automatische re-connection in der Applikation funktioniert leider nicht immer. So wird ein Neustart der RSCP-Applikation nötig.
 
-Für dieses Problem habe ich einen einfachen WatchDog geschrieben. Damit der WatchDog den Betrieb der Applikation überwachen kann, lasse ich mit einer kleinen Teil in der RscpMain eine weitere Datei im RAMDisk erstellen. In der Datei ist die Unixtime, diese widerum liest der WatchDog ein und vergleicht diese mit einer definierten Differenz mit der aktuellen Ziet.  
+Für dieses Problem habe ich einen einfachen WatchDog geschrieben. Damit der WatchDog den Betrieb der Applikation überwachen kann, lasse ich mit einem kleinen Teil in der RscpMain, eine weitere Datei im RAMDisk erstellen. In der Datei ist die Unixtime des S10, diese widerum liest der WatchDog ein und vergleicht diese mit einer definierten Differenz mit der aktuellen Ziet.  
 
 In der RscpMain.cpp sind die Zeilen 93 bis 98 neu:
 ```
@@ -245,14 +245,18 @@ In der neuen Watchdog.cpp kann noch verschiedenes definiert werden:
 //Nach dieser Zeit wird der rebootCounter zurückgesetzt wenn die Daten aktuell sind, in Minuten
 #define resetMin        60
 ```
-Wenn der Watchdog zuschlägt, erstellt er eine Datei "Watchdog.csv" im RscpGui Ordner. Somit ist eine kotrolle der aktivität möglich. Es wird je aktivität eine Zeile erstellt entweder mit reboot eintrag oder mit pkill wenn die Applikation neu gestartet wurde.
+Wenn der Watchdog zuschlägt, erstellt er eine Datei "Watchdog.csv" im RscpGui Ordner. Somit ist eine kotrolle der aktivität möglich. Es wird je aktivität eine Zeile erstellt, entweder mit reboot eintrag oder mit pkill wenn die Applikation neu gestartet wurde.
 
-In der atReboot.sh habe ich den Watchdog eingefügt.
+Für den automatischen Start habe ich den Watchdog in der _atReboot.sh_ eingefügt.
 
 Damit einfach kompiliert werden kann habe ich das Makefile auch angepasst.
 
-Somit müsste für ein nachrüsten des WatchDog 1. die RscpMain.cpp angepasst, 2. die Watchdog.cpp kopiert und 3. das Makefile und die atReboot.sh ausgetauscht werden.
+Somit müsste für ein nachrüsten des WatchDog 1. die _RscpMain.cpp_ angepasst, 2. die _Watchdog.cpp_ kopiert und 3. das _Makefile_ und die _atReboot.sh_ ausgetauscht werden.
 
+ToDo: Ein Fehler ist aktuell noch zu beheben -- mehrfacher Reboot des PI --. Also solltet ihr das S10 vom Netzwek trennen oder eine längere sonstige Störung bestehen, würde alle 8 Minuten der Raspberry Pi mit einem Reboot neu gestartet. Um dies zu stoppen musst du folgendes in der Komandozeile eingeben:
+```
+pi@raspberrypi:~ $ pkill watchdog
+```
 
 ### Dateibeschreibung
 
