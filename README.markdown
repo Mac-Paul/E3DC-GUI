@@ -219,6 +219,40 @@ tmpfs 4096 0 4096 0% /mnt/RAMDisk
 Diesen Teil zum RAMDisk habe ich von hier Kopiert:
 [http://www.kriwanek.de/raspberry-pi/486-ram-disk-auf-raspberry-pi-einrichten.html](http://www.kriwanek.de/raspberry-pi/486-ram-disk-auf-raspberry-pi-einrichten.html)
 
+### Watchdog
+
+Teilweise bleibt die RSCP-Applikation hängen und die Automatische re-connection in der Applikation funktioniert leider nicht immer. So wird ein Neustart der RSCP-Applikation nötig.
+
+Für dieses Problem habe ich einen einfachen WatchDog geschrieben. Damit der WatchDog den Betrieb der Applikation überwachen kann, lasse ich mit einer kleinen Teil in der RscpMain eine weitere Datei im RAMDisk erstellen. In der Datei ist die Unixtime, diese widerum liest der WatchDog ein und vergleicht diese mit einer definierten Differenz mit der aktuellen Ziet.  
+
+In der RscpMain.cpp sind die Zeilen 98 bis 103 neu:
+```
+ofstream fout("/mnt/RAMDisk/Unixtime.txt");
+if (fout.is_open()) {
+  fout << TAG_EMS_OUT_UNIXTIME << endl;
+  fout.close();
+  }
+else cerr << "Konnte Unixtime.txt nicht erstellen!";
+```
+In der neuen Watchdog.cpp kann noch verschiedenes definiert werden:
+```
+//Zeitdifferenz zur aktuellen Zeit bis zur Watchdog aktivierung, in Sekunden
+#define diff            300
+//Zeitinterval für die Abfragen des Watchdog, in Sekunden
+#define sleepTime       120
+//Anzahl Programm Neustarts bis zum Reboot
+#define rebootCounter   4
+//Nach dieser Zeit wird der rebootCounter zurückgesetzt wenn die Daten aktuell sind, in Minuten
+#define resetMin        60
+```
+Wenn der Watchdog zuschlägt, erstellt er eine Datei "Watchdog.csv" im RscpGui Ordner. Somit ist eine kotrolle der aktivität möglich. Es wird je aktivität eine Zeile erstellt entweder mit reboot eintrag oder mit pkill wenn die Applikation neu gestartet wurde.
+
+In der atReboot.sh habe ich den Watchdog eingefügt.
+Damit einfach kompiliert werden kann habe ich das Makefile auch angepasst.
+
+Somit müsste für ein nachrüsten des WatchDog 1. die RscpMain.cpp angepasst, 2. die Watchdog.cpp kopiert und 3. das Makefile und die atReboot.sh ausgetauscht werden.
+
+
 ### Dateibeschreibung
 
 AES.cpp / AES.h / RscpProtokoll.cpp / RscpTag.h / RscpType.h / SocketConnektion.cpp / SocketConnection.h

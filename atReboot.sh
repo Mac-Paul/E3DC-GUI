@@ -1,8 +1,9 @@
 #!/bin/bash
 
 sleep 12
-sudo ./RscpGui/Key3 &
-./RscpGui/RscpMain &
+sudo /home/pi/RscpGui/Key3 &
+/home/pi/RscpGui/RscpMain &
 sleep 10
-./RscpGui/RscpGui &
+/home/pi/RscpGui/RscpGui &
+/home/pi/RscpGui/watchdog &
 exit 0

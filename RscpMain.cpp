@@ -24,6 +24,7 @@
 #define E3DC_USER           "Max.Mustermann"
 #define E3DC_PASS           "password"
 #define AES_PASS            "1234567890"
+
 //Wenn vorhandene Bitte für Externe-Quelle (Additional) und
 //Wallbox je ein 1, sonst 0 eintragen.
 #define Additional 	1
@@ -82,13 +83,19 @@ int createRequestExample(SRscpFrameBuffer * frameBuffer) {
     else
     {
       if (TAG_EMS_OUT_POWER_HOME > 0) {
-      ofstream fout("/mnt/RAMDisk/RscpGui.txt");
-      if (fout.is_open()) {
-        fout << TAG_EMS_OUT_DATE << "\n" << TAG_EMS_OUT_TIME << "\n" << TAG_EMS_OUT_POWER_PV << "\n" << TAG_EMS_OUT_POWER_BAT << "\n" << TAG_EMS_OUT_POWER_HOME << "\n" << TAG_EMS_OUT_POWER_GRID << "\n" << TAG_EMS_OUT_BAT_SOC << "\n" << TAG_EMS_OUT_BAT_STATE << "\n" << TAG_EMS_OUT_AUTARKY << "\n" << TAG_EMS_OUT_SELF_CONSUMPTION << "\n" << TAG_EMS_OUT_SERIAL_NUMBER << "\n" << TAG_EMS_OUT_UNIXTIME << "\n" << Additional << "\n" << TAG_EMS_OUT_POWER_ADD << "\n" << Wallbox << "\n" << TAG_EMS_OUT_POWER_WB_ALL << "\n" << TAG_EMS_OUT_POWER_WB_SOLAR << "\n" << TAG_EMS_OUT_PVI_STATE << "\n" << TAG_EMS_OUT_PM_STATE << endl;
-        fout.close();
-        }
-      else cerr << "Konnte RscpGui.txt nicht erstellen!";
+        ofstream fout("/mnt/RAMDisk/RscpGui.txt");
+        if (fout.is_open()) {
+          fout << TAG_EMS_OUT_DATE << "\n" << TAG_EMS_OUT_TIME << "\n" << TAG_EMS_OUT_POWER_PV << "\n" << TAG_EMS_OUT_POWER_BAT << "\n" << TAG_EMS_OUT_POWER_HOME << "\n" << TAG_EMS_OUT_POWER_GRID << "\n" << TAG_EMS_OUT_BAT_SOC << "\n" << TAG_EMS_OUT_BAT_STATE << "\n" << TAG_EMS_OUT_AUTARKY << "\n" << TAG_EMS_OUT_SELF_CONSUMPTION << "\n" << TAG_EMS_OUT_SERIAL_NUMBER << "\n" << TAG_EMS_OUT_UNIXTIME << "\n" << Additional << "\n" << TAG_EMS_OUT_POWER_ADD << "\n" << Wallbox << "\n" << TAG_EMS_OUT_POWER_WB_ALL << "\n" << TAG_EMS_OUT_POWER_WB_SOLAR << "\n" << TAG_EMS_OUT_PVI_STATE << "\n" << TAG_EMS_OUT_PM_STATE << endl;
+          fout.close();
+          }
+        else cerr << "Konnte RscpGui.txt nicht erstellen!";
     }
+    ofstream fout("/mnt/RAMDisk/Unixtime.txt");
+    if (fout.is_open()) {
+      fout << TAG_EMS_OUT_UNIXTIME << endl;
+      fout.close();
+      }
+    else cerr << "Konnte Unixtime.txt nicht erstellen!";
 
         printf("\n____________________\nRequest cyclic data\n");
         // request data information
