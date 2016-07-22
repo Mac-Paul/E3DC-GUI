@@ -92,7 +92,7 @@ int createRequestExample(SRscpFrameBuffer * frameBuffer) {
     }
     ofstream fout("/mnt/RAMDisk/Unixtime.txt");
     if (fout.is_open()) {
-      fout << TAG_EMS_OUT_UNIXTIME << endl;
+      fout << TAG_EMS_OUT_DATE << ";" << TAG_EMS_OUT_TIME << "\n" << TAG_EMS_OUT_UNIXTIME << endl;
       fout.close();
       }
     else cerr << "Konnte Unixtime.txt nicht erstellen!";
