@@ -17,7 +17,7 @@
 
 using namespace std;
 
-char response[20], Path[100], DATE[40], TIME[40];
+char response[20], delete_res[20], Path[100], DATE[40], TIME[40];
 int UnixTime, resetTime;
 int counterReboot = 0;
 int resetCounter = 0;
@@ -25,6 +25,7 @@ int resetCounter = 0;
 void ReadData(char filePath[100]){
   fstream datei(filePath);
   if (datei.is_open()) {
+    datei.getline(delete_res ,20, '\n');
     datei.getline(response ,20, '\n');
     datei.close();
   }
@@ -50,7 +51,7 @@ int main()
       int UnixTime = atoi(response);
       int DiffTime = AktuallTime - UnixTime;
       if(DiffTime > diff){
-        counterReboot = counterReboot +1;
+        counterReboot ++;
         if (counterReboot == rebootCounter){
           ofstream fout("/home/pi/RscpGui/Watchdog.csv", ios::app);
           if (fout.is_open()) {
@@ -62,6 +63,7 @@ int main()
         }
         system("pkill RscpMain");
         sleep(2);
+        cout << "test";
         system("/home/pi/RscpGui/RscpMain &");
         ofstream fout("/home/pi/RscpGui/Watchdog.csv", ios::app);
         if (fout.is_open()) {
@@ -70,7 +72,7 @@ int main()
         }
       }
       else {
-        resetCounter = resetCounter +1;
+        resetCounter ++;
         if(resetCounter == resetTime){
           counterReboot = 0;
           resetCounter = 0;
