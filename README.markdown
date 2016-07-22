@@ -1,6 +1,7 @@
 ## RSCP GUI
 
 _Version 2.1 Stand: 22.07.2016_
+
 Changelog V2.1: Watchdog erstellt
 
 Hier beschreibe ich wie du auf einem Rasperry Pi mit 3,2" Touchdisplay dein _S10 Hauskraftwerk_ von _E3DC_ visualisieren kannst.
