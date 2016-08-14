@@ -1,4 +1,8 @@
 ## RSCP GUI
+#### Wichtig
+Bitte meine neue Repository __E3dcGui__ beachten!  
+[https://github.com/nischram/E3dcGui.git](https://github.com/nischram/E3dcGui.git)  
+Diese Repository wird nicht weitergeführt!
 
 _Version 2.1 Stand: 22.07.2016_
 
